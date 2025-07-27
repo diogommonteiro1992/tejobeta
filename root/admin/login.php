@@ -7,13 +7,14 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $_POST['user'] ?? '';
     $pass = $_POST['pass'] ?? '';
-    // Simplified auth - replace with secure check
-    if ($user === 'admin' && $pass === 'admin') {
+    $code = $_POST['code'] ?? '';
+    // Simplified auth and 2FA check
+    if ($user === 'admin' && $pass === 'admin' && $code === ADMIN_2FA_CODE) {
         $_SESSION['admin'] = true;
         header('Location: dashboard.php');
         exit;
     }
-    $error = 'Invalid credentials';
+    $error = 'Invalid credentials or code';
 }
 
 $twig = get_twig(__DIR__ . '/templates');

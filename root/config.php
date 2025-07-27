@@ -12,6 +12,8 @@ define('DB_USER', 'root');
 define('DB_PASS', 'password');
 define('DB_NAME', 'root_platform');
 
+define('ADMIN_2FA_CODE', '123456');
+
 // Simple function to connect using MySQLi
 function db_connect() {
     $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

@@ -1,0 +1,15 @@
+<h1>Contact Messages</h1>
+<table border="1">
+    <tr><th>Date</th><th>Name</th><th>Email</th><th>Message</th></tr>
+    {% for m in messages %}
+    <tr>
+        <td>{{ m.date }}</td>
+        <td>{{ m.name }}</td>
+        <td>{{ m.email }}</td>
+        <td>{{ m.message }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4">No messages</td></tr>
+    {% endfor %}
+</table>
+

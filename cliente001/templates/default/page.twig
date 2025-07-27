@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Client Site</title>
+    {% if custom_css %}
+    <style>{{ custom_css|raw }}</style>
+    {% endif %}
 </head>
 <body>
     <h1>{{ content }}</h1>

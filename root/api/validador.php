@@ -10,6 +10,7 @@ $stmt = $mysqli->prepare('SELECT status, allowed_ip FROM websites WHERE site_key
 $stmt->bind_param('s', $siteKey);
 $stmt->execute();
 $result = $stmt->get_result();
+
 if ($row = $result->fetch_assoc()) {
     if ($row['allowed_ip'] && $row['allowed_ip'] !== $clientIp) {
         $status = 'blocked';
@@ -19,5 +20,8 @@ if ($row = $result->fetch_assoc()) {
 } else {
     $status = 'unknown';
 }
+
+$logLine = sprintf("%s\t%s\t%s\t%s\n", date('c'), $clientIp, $siteKey, $status);
+file_put_contents(__DIR__ . '/../logs/validador.log', $logLine, FILE_APPEND);
 
 echo json_encode(['status' => $status]);
