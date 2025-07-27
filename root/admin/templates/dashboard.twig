@@ -1,0 +1,14 @@
+<h1>Websites</h1>
+<p><a href="messages.php">View contact messages</a></p>
+<table border="1">
+    <tr><th>ID</th><th>Domain</th><th>Status</th></tr>
+    {% for site in sites %}
+    <tr>
+        <td>{{ site.id }}</td>
+        <td>{{ site.domain }}</td>
+        <td>{{ site.status }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3">No websites</td></tr>
+    {% endfor %}
+</table>
